@@ -1,0 +1,67 @@
+---
+# tasks file for omero-prometheus-exporter
+
+- name: omero prometheus exporter | install virtualenv package
+  become: yes
+  yum:
+    name: python-virtualenv
+    state: present
+
+- name: omero prometheus exporter | create system user
+  become: yes
+  user:
+    name: "{{ omero_prometheus_exporter_system_user }}"
+    state: present
+    system: yes
+
+- name: omero prometheus exporter | install omero-prometheus-tools
+  become: yes
+  pip:
+    name:
+    # - https://github.com/manics/omero-prometheus-tools/archive/pip-package.zip
+    - https://github.com/manics/omero-prometheus-tools/archive/b33dc8c4d237393ed1f90070bfd24e378c649932.zip
+    state: present
+    virtualenv: /opt/prometheus-omero-tools
+    virtualenv_site_packages: yes
+  notify:
+  - restart prometheus-omero-sessions
+  - restart prometheus-omero-counts
+
+- name: omero prometheus exporter | configure services
+  become: yes
+  template:
+    dest: /etc/sysconfig/{{ item }}
+    src: sysconfig-{{ item }}.j2
+    owner: "{{ omero_prometheus_exporter_system_user }}"
+    group: root
+    mode: 0440
+  with_items:
+  - prometheus-omero-sessions
+  - prometheus-omero-counts
+  notify:
+  - restart prometheus-omero-sessions
+  - restart prometheus-omero-counts
+
+- name: omero prometheus exporter | install services
+  become: yes
+  template:
+    dest: /etc/systemd/system/{{ item }}.service
+    src: systemd-{{ item }}-service.j2
+    remote_src: True
+  with_items:
+  - prometheus-omero-sessions
+  - prometheus-omero-counts
+  notify:
+  - restart prometheus-omero-sessions
+  - restart prometheus-omero-counts
+
+- name: omero prometheus exporter | enable services
+  become: yes
+  systemd:
+    daemon_reload: yes
+    enabled: yes
+    name: "{{ item }}"
+    state: started
+  with_items:
+  - prometheus-omero-sessions
+  - prometheus-omero-counts

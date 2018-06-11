@@ -1,0 +1,19 @@
+---
+- hosts: all
+  roles:
+
+    - role: openmicroscopy.postgresql
+      postgresql_install_server: True
+      postgresql_databases:
+        - name: omero
+      postgresql_users:
+        - user: omero
+          password: omero
+          databases: [omero]
+
+    - role: openmicroscopy.omero-server
+      ice_python_wheel: https://github.com/openmicroscopy/zeroc-ice-py-centos7/releases/download/0.0.3/zeroc_ice-3.6.4-cp27-cp27mu-linux_x86_64.whl
+
+    - role: ansible-role-omero-prometheus-exporter
+      omero_prometheus_exporter_omero_user: root
+      omero_prometheus_exporter_omero_password: omero

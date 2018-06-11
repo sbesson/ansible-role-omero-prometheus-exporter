@@ -1,0 +1,10 @@
+OPTIONS=" \
+{% for queryfile in omero_prometheus_exporter_counts_query_files %}
+  --config {{ queryfile }} \
+{% endfor %}
+  --host {{ omero_prometheus_exporter_omero_host | quote }} \
+  --user {{ omero_prometheus_exporter_omero_user | quote }} \
+  --password {{ omero_prometheus_exporter_omero_password | quote }} \
+  --listen {{ omero_prometheus_exporter_counts_port }} \
+  --interval {{ omero_prometheus_exporter_counts_interval }} \
+"

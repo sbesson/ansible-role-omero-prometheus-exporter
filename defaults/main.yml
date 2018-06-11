@@ -1,0 +1,33 @@
+---
+# defaults file for omero-prometheus-exporter
+
+# OMERO username, required
+#omero_prometheus_exporter_omero_user:
+
+# OMERO password, required
+#omero_prometheus_exporter_omero_password:
+
+# OMERO server
+omero_prometheus_exporter_omero_host: localhost
+
+# System user account for running services
+omero_prometheus_exporter_system_user: omero-prometheus
+
+# TODO: should we change these ports to fit in with
+# https://github.com/prometheus/prometheus/wiki/Default-port-allocations ?
+
+# OMERO sessions metrics should be published on this port
+omero_prometheus_exporter_sessions_port: 9171
+
+# OMERO counts metrics should be published on this port
+omero_prometheus_exporter_counts_port: 9172
+
+# Recalculate sessions metrics at this interval (seconds)
+omero_prometheus_exporter_sessions_interval: 60
+
+# Recalculate counts metrics at this interval (seconds)
+omero_prometheus_exporter_counts_interval: 60
+
+# List of query files for counts metrics
+omero_prometheus_exporter_counts_query_files:
+- /opt/prometheus-omero-tools/etc/prometheus-omero-counts.yml
