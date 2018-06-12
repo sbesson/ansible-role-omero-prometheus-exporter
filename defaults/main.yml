@@ -23,3 +23,11 @@ omero_prometheus_exporter_interval: 60
 # List of query files for counts metrics
 omero_prometheus_exporter_counts_query_files:
 - /opt/prometheus-omero-tools/etc/prometheus-omero-counts.yml
+
+
+######################################################################
+# Expert users only!
+######################################################################
+
+# Prometheus component versions
+omero_prometheus_tools_version: 0.1.0

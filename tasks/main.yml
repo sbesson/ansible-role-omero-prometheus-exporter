@@ -19,7 +19,7 @@
   pip:
     name:
     # - https://github.com/manics/omero-prometheus-tools/archive/pip-package.zip
-    - https://github.com/manics/omero-prometheus-tools/archive/b8c692318a440f53fbd400185677aeba57408f44.zip
+    - https://github.com/ome/omero-prometheus-tools/archive/{{ omero_prometheus_tools_version }}.zip
     state: present
     virtualenv: /opt/prometheus-omero-tools
     virtualenv_site_packages: yes
