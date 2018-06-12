@@ -26,6 +26,13 @@ docker:
     image: centos/systemd
     image_version: latest
     privileged: True
+    ansible_groups:
+    - docker-hosts
+
+ansible:
+  group_vars:
+    docker-hosts:
+      omero_server_systemd_require_network: False
 
 verifier:
   name: testinfra
