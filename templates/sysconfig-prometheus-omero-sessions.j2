@@ -1,7 +1,0 @@
-OPTIONS=" \
-  --host localhost \
-  --user {{ omero_prometheus_exporter_omero_user | quote }} \
-  --password {{ omero_prometheus_exporter_omero_password | quote }} \
-  --listen {{ omero_prometheus_exporter_sessions_port }} \
-  --interval {{ omero_prometheus_exporter_sessions_interval }} \
-"

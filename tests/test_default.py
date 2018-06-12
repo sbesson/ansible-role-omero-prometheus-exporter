@@ -5,19 +5,16 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     '.molecule/ansible_inventory').get_hosts('all')
 
 
-@pytest.mark.parametrize("name", [
-    "prometheus-omero-sessions",
-    "prometheus-omero-counts",
-])
-def test_services_running_and_enabled(Service, name):
-    assert Service(name).is_running
-    assert Service(name).is_enabled
+def test_services_running_and_enabled(Service):
+    assert Service('prometheus-omero-exporter').is_running
+    assert Service('prometheus-omero-exporter').is_enabled
 
 
-@pytest.mark.parametrize("port,metric", [
-    (9171, "omero_sessions_processing_seconds_sum"),
-    (9172, "omero_counts_processing_seconds_sum"),
+@pytest.mark.parametrize("metric", [
+    'omero_sessions_processing_seconds_sum',
+    'omero_sessions_active',
+    'omero_counts_processing_seconds_sum',
 ])
-def test_node_exporter_metrics(Command, port, metric):
-    out = Command.check_output('curl http://localhost:%d/metrics' % port)
+def test_node_exporter_metrics(Command, metric):
+    out = Command.check_output('curl http://localhost:9449/metrics')
     assert metric in out

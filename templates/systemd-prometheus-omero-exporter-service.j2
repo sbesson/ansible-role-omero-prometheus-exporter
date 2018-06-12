@@ -1,0 +1,14 @@
+[Unit]
+Description=prometheus-omero-exporter
+
+[Service]
+User={{ omero_prometheus_exporter_system_user }}
+EnvironmentFile=-/etc/sysconfig/prometheus-omero-exporter
+Environment="PYTHONPATH=/opt/omero/server/OMERO.server/lib/python"
+ExecStart=/opt/prometheus-omero-tools/bin/omero-prometheus-tools.py $OPTIONS
+RestartSec=10
+Restart=on-failure
+SyslogIdentifier=prometheus-omero-exporter
+
+[Install]
+WantedBy=multi-user.target

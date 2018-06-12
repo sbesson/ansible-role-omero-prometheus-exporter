@@ -1,18 +1,10 @@
 ---
 # handlers file for omero-prometheus-exporter
 
-- name: restart prometheus-omero-sessions
+- name: restart prometheus-omero-exporter
   become: yes
   systemd:
     daemon_reload: yes
     enabled: yes
-    name: prometheus-omero-sessions
-    state: restarted
-
-- name: restart prometheus-omero-counts
-  become: yes
-  systemd:
-    daemon_reload: yes
-    enabled: yes
-    name: prometheus-omero-counts
+    name: prometheus-omero-exporter
     state: restarted
