@@ -30,4 +30,4 @@ omero_prometheus_exporter_counts_query_files:
 ######################################################################
 
 # Prometheus component versions
-omero_prometheus_tools_version: 0.1.1
+omero_prometheus_tools_version: 0.1.3
