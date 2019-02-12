@@ -17,9 +17,8 @@
 - name: omero prometheus exporter | install omero-prometheus-tools
   become: yes
   pip:
-    name:
-    # - https://github.com/manics/omero-prometheus-tools/archive/pip-package.zip
-    - https://github.com/ome/omero-prometheus-tools/archive/{{ omero_prometheus_tools_version }}.zip
+    name: omero-prometheus-tools
+    version: "{{ omero_prometheus_tools_version }}"
     state: present
     virtualenv: /opt/prometheus-omero-tools
     virtualenv_site_packages: yes
