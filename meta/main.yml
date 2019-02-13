@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: omero_prometheus_tools
+  role_name: omero_prometheus_exporter
   author: ome-devel@lists.openmicroscopy.org.uk
   description: OMERO Prometheus exporter
   company: Open Microscopy Environment
