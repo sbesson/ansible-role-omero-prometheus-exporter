@@ -1,6 +1,9 @@
 OMERO Prometheus Exporter
 =========================
 
+[![Build Status](https://travis-ci.org/openmicroscopy/ansible-role-omero-prometheus-exporter.svg)](https://travis-ci.org/openmicroscopy/ansible-role-omero-prometheus-exporter)
+[![Ansible Role](https://img.shields.io/ansible/role/37759.svg)](https://galaxy.ansible.com/openmicroscopy/omero_prometheus_exporter/)
+
 OMERO Prometheus exporter.
 
 Configures services for exporting prometheus-compatible metrics from OMERO.server.
