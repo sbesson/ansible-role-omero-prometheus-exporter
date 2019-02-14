@@ -1,5 +1,5 @@
 import os
-
+import pytest
 import testinfra.utils.ansible_runner
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
@@ -16,6 +16,6 @@ def test_services_running_and_enabled(host):
     'omero_sessions_active',
     'omero_counts_processing_seconds_sum',
 ])
-def test_node_exporter_metrics(Command, metric):
+def test_node_exporter_metrics(host, metric):
     out = host.check_output('curl http://localhost:9449/metrics')
     assert metric in out
