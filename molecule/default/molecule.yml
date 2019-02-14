@@ -9,7 +9,7 @@ platforms:
   - name: omero-prometheus-tools
     image: centos/systemd
     image_version: latest
-    privileged: True
+    privileged: true
 provisioner:
   name: ansible
   lint:

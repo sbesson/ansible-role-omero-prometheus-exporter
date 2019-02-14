@@ -3,7 +3,7 @@
   hosts: all
   roles:
     - role: openmicroscopy.postgresql
-      postgresql_install_server: True
+      postgresql_install_server: true
       postgresql_databases:
         - name: omero
       postgresql_users:
