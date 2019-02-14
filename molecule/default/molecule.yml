@@ -6,12 +6,18 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: instance
-    image: centos:7
+  - name: omero-prometheus-tools
+    image: centos/systemd
+    image_version: latest
+    privileged: True
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
+  inventory:
+    group_vars:
+      docker-hosts:
+        omero_server_systemd_require_network: false
 scenario:
   name: default
 verifier:
