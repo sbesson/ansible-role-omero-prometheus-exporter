@@ -13,9 +13,9 @@
 
     - role: openmicroscopy.omero-server
       # Use precompiled IcePy to speed up installation
-      ice_python_wheel: >-
-        https://github.com/openmicroscopy/zeroc-ice-py-centos7/
-        releases/download/0.0.3/zeroc_ice-3.6.4-cp27-cp27mu-linux_x86_64.whl
+      ice_python_wheel: "https://github.com/openmicroscopy/\
+        zeroc-ice-py-centos7/releases/download/0.0.3/\
+        zeroc_ice-3.6.4-cp27-cp27mu-linux_x86_64.whl"
 
     - role: ansible-role-omero-prometheus-exporter
       omero_prometheus_exporter_omero_user: root
