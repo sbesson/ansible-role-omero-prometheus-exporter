@@ -9,6 +9,7 @@ platforms:
   - name: omero-prometheus-tools
     image: centos/systemd
     image_version: latest
+    command: /sbin/init
     privileged: true
 provisioner:
   name: ansible
