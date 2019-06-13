@@ -1,2 +1,3 @@
-- src: openmicroscopy.postgresql
-- src: openmicroscopy.omero-server
+---
+- src: ome.postgresql
+- src: ome.omero_server

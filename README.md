@@ -1,8 +1,8 @@
 OMERO Prometheus Exporter
 =========================
 
-[![Build Status](https://travis-ci.org/openmicroscopy/ansible-role-omero-prometheus-exporter.svg)](https://travis-ci.org/openmicroscopy/ansible-role-omero-prometheus-exporter)
-[![Ansible Role](https://img.shields.io/ansible/role/37791.svg)](https://galaxy.ansible.com/openmicroscopy/omero_prometheus_exporter/)
+[![Build Status](https://travis-ci.org/ome/ansible-role-omero-prometheus-exporter.svg)](https://travis-ci.org/ome/ansible-role-omero-prometheus-exporter)
+[![Ansible Role](https://img.shields.io/ansible/role/37791.svg)](https://galaxy.ansible.com/ome/omero_prometheus_exporter/)
 
 OMERO Prometheus exporter.
 
@@ -34,7 +34,7 @@ Example playbook
 
     - hosts: localhost
       roles:
-      - role: omero-prometheus-exporter
+      - role: ome.omero_prometheus_exporter
         omero_prometheus_exporter_omero_user: omero-monitoring
         omero_prometheus_exporter_omero_password: omero-monitoring
         omero_prometheus_exporter_omero_host: omero.example.org
