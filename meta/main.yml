@@ -9,4 +9,5 @@ galaxy_info:
   - name: EL
     versions:
     - 7
+  role_name: omero_prometheus_exporter
   galaxy_tags: []
