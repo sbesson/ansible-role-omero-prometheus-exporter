@@ -20,7 +20,7 @@ provisioner:
   inventory:
     group_vars:
       dockers-hosts:
-        omero_server_systemd_require_network: False
+        omero_server_systemd_require_network: false
 scenario:
   name: default
 verifier:

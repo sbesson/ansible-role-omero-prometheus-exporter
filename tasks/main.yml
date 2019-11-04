@@ -2,31 +2,31 @@
 # tasks file for omero-prometheus-exporter
 
 - name: omero prometheus exporter | install virtualenv package
-  become: yes
+  become: true
   yum:
     name: python-virtualenv
     state: present
 
 - name: omero prometheus exporter | create system user
-  become: yes
+  become: true
   user:
     name: "{{ omero_prometheus_exporter_system_user }}"
     state: present
-    system: yes
+    system: true
 
 - name: omero prometheus exporter | install omero-prometheus-tools
-  become: yes
+  become: true
   pip:
     name: omero-prometheus-tools
     version: "{{ omero_prometheus_tools_version }}"
     state: present
     virtualenv: /opt/prometheus-omero-tools
-    virtualenv_site_packages: yes
+    virtualenv_site_packages: true
   notify:
-  - restart prometheus-omero-exporter
+    - restart prometheus-omero-exporter
 
 - name: omero prometheus exporter | configure service
-  become: yes
+  become: true
   template:
     dest: /etc/sysconfig/prometheus-omero-exporter
     src: sysconfig-prometheus-omero-exporter.j2
@@ -34,20 +34,20 @@
     group: root
     mode: 0440
   notify:
-  - restart prometheus-omero-exporter
+    - restart prometheus-omero-exporter
 
 - name: omero prometheus exporter | install service
-  become: yes
+  become: true
   template:
     dest: /etc/systemd/system/prometheus-omero-exporter.service
     src: systemd-prometheus-omero-exporter-service.j2
   notify:
-  - restart prometheus-omero-exporter
+    - restart prometheus-omero-exporter
 
 - name: omero prometheus exporter | enable service
-  become: yes
+  become: true
   systemd:
-    daemon_reload: yes
-    enabled: yes
+    daemon_reload: true
+    enabled: true
     name: prometheus-omero-exporter
     state: started

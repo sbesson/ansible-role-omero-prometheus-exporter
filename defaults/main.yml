@@ -2,10 +2,10 @@
 # defaults file for omero-prometheus-exporter
 
 # OMERO username, required
-#omero_prometheus_exporter_omero_user:
+# omero_prometheus_exporter_omero_user:
 
 # OMERO password, required
-#omero_prometheus_exporter_omero_password:
+# omero_prometheus_exporter_omero_password:
 
 # OMERO server
 omero_prometheus_exporter_omero_host: localhost
@@ -22,7 +22,7 @@ omero_prometheus_exporter_interval: 60
 
 # List of query files for counts metrics
 omero_prometheus_exporter_counts_query_files:
-- /opt/prometheus-omero-tools/etc/prometheus-omero-counts.yml
+  - /opt/prometheus-omero-tools/etc/prometheus-omero-counts.yml
 
 
 ######################################################################
