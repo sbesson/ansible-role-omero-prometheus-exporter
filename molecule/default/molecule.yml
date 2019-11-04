@@ -1,0 +1,29 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: omero_prometheus_exporter
+    image: centos/systemd:lates
+    image_version: latest
+    privileged: true
+    command: /sbin/init
+    ansible_groups:
+      - docker-hosts
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  inventory:
+    group_vars:
+      dockers-hosts:
+        omero_server_systemd_require_network: False
+scenario:
+  name: default
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
