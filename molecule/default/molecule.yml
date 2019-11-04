@@ -7,8 +7,7 @@ lint:
   name: yamllint
 platforms:
   - name: omero_prometheus_exporter
-    image: centos/systemd:lates
-    image_version: latest
+    image: centos/systemd:latest
     privileged: true
     command: /sbin/init
     ansible_groups:
